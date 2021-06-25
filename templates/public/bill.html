@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Title Page-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Bills and Proposals</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="./static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="./static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="./static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="./static/css/theme.css" rel="stylesheet" media="all">
+    
+    <script src="./static/js/congressapi.js"></script>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <div class="page-wrapper">
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="https://media.discordapp.net/attachments/759199160149737472/857203208346796042/unknown.png?width=235&height=35" alt="VOTE Logo" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="list-unstyled navbar__list">
+                        
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-chart-bar"></i>Statements</a>
+                        </li>
+                        
+                        <li class="active">
+                            <a href="bill.html">
+                                <i class="far fa-check-square"></i>Bills and Proposals</a>
+                        </li>
+                        <li>
+                            <a href="pollingloc.html">
+                                <i class="fas fa-map-marker-alt"></i>Polling Locations</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a class="logo" href="index.html">
+                    <img src="https://media.discordapp.net/attachments/759199160149737472/857203208346796042/unknown.png?width=235&height=35" alt="VOTE Logo" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-chart-bar"></i>Statements</a>
+                        </li>
+                        
+                        <li class="active">
+                            <a href="bill.html">
+                                <i class="far fa-check-square"></i>Bills and Proposals</a>
+                        </li>
+                        <li>
+                            <a href="pollingloc.html">
+                                <i class="fas fa-map-marker-alt"></i>Polling Locations</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-container">
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                        
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="title-5 m-b-35">Politican Bills and Proposals</h3>
+                                
+                                <input id="pac-input" class="au-input au-input--xl" style="width: 400;" type="text" name="search" placeholder="Enter a poltician ID" />
+                                <button onclick="getBillInfo();" style="background-color: #4173d7; width: 45px; height: 45px; border-radius: 5px; " type="submit">
+                                    <i class="zmdi zmdi-search" style="color: white;"></i>
+                                </button>
+                                
+                                <div class="rs-select2--light rs-select2--md">
+                                    <select class="js-select2" id="property" aria-placeholder="Status">
+                                        <option value="introduced" id="">Introduced</option>
+                                        <option value="updated" id="">Updated</option>
+                                        <option value="active" id="">Active</option>
+                                        <option value="passed" id="">Passed</option>
+                                        <option value="enacted" id="">Enacted</option>
+                                        <option value="vetoed" id="">Vetoed</option>
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                                <br><br><br>
+                                <!-- <div class="rs-select2--light rs-select2--sm">
+                                    <select class="js-select2" name="time">
+                                        <option selected="selected">Member ID</option>
+                                        <option value="">3 Days</option>
+                                        <option value="">1 Week</option>
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div> -->
+
+                            </div>
+                            <br><br><br>
+                            <div class="table-data__tool">
+                                <br><br><br>
+                                <h3 style="padding-left: 15px;">Click <a href="https://www.congress.gov/help/field-values/member-bioguide-ids" target="_blank" rel="noopener noreferrer">here </a> to find your politician's ID.</h3>
+                                <h3 style="padding-left: 15px;">Click <a href="https://www.congress.gov/members?searchResultViewType=expanded" target="_blank" rel="noopener noreferrer">here </a> to find your politician's year's in office.</h3>
+                                
+                            </div>
+                        </div>
+                        
+                        </div>
+                        <div class="row m-t-30">
+                            <div class="col-md-12">
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-striped">
+                                        <thead >   
+                                            <tr style="background-color: #4173d7;">
+                                            <th scope="col" style="color: white">Name</th>
+                                            <th scope="col" style="color: white">Title</th>
+                                            <th scope="col" style="color: white" >Sponsor Party</th>
+                                            <th scope="col" style="color: white">Introduced Date</th>
+                                            <th scope="col"style="color: white">State</th>
+                                            <th scope="col" style="color: white">Bill URL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="results">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="./static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="./static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="./static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="./static/vendor/slick/slick.min.js">
+    </script>
+    <script src="./static/vendor/wow/wow.min.js"></script>
+    <script src="./static/vendor/animsition/animsition.min.js"></script>
+    <script src="./static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="./static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="./static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="./static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="./static/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="./static/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

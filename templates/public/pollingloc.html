@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Title Page-->
+    <title>Polling Locations</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="./static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="./static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="./static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="./static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="./static/css/theme.css" rel="stylesheet" media="all">
+
+    <style type="text/css">
+    /* force class color to override the bootstrap base rule
+       NOTE: adding 'url: #' to calendar makes this unneeded
+     */
+    .au-btn--submit:hover {
+        cursor: pointer;
+    }
+    .fc-event, .fc-event:hover {
+          color: #fff !important;
+          text-decoration: none;
+    }
+    </style>
+    <!-- JavaScript --> 
+    <script>
+        function initAutocomplete() {
+            const input = document.getElementById("pac-input");
+            const searchBox = new google.maps.places.SearchBox(input);
+        }
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyQHeTSGuhn_DPNZMnukVeJfC1F0qb1rk&callback=initAutocomplete&libraries=places&v=weekly"
+      defer
+    ></script>
+    <script src="./static/js/gcloud.js"></script>
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="https://media.discordapp.net/attachments/759199160149737472/857203208346796042/unknown.png?width=235&height=35" alt="VOTE logo" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="list-unstyled navbar__list">
+                        
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-chart-bar"></i>Statements</a>
+                        </li>
+                        
+                        <li>
+                            <a href="bill.html">
+                                <i class="far fa-check-square"></i>Bills and Proposals</a>
+                        </li>
+                        <li class="active">
+                            <a href="pollingloc.html">
+                                <i class="fas fa-map-marker-alt"></i>Polling Locations</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a class="logo" href="index.html">
+                    <img src="https://media.discordapp.net/attachments/759199160149737472/857203208346796042/unknown.png?width=235&height=35" alt="VOTE Logo" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        
+                        <li>
+                            <a href="statements.html">
+                                <i class="fas fa-chart-bar"></i>Statements</a>
+                        </li>
+                        
+                        <li>
+                            <a href="bill.html">
+                                <i class="far fa-check-square"></i>Bills and Proposals</a>
+                        </li>
+                        <li class="active">
+                            <a href="pollingloc.html">
+                                <i class="fas fa-map-marker-alt"></i>Polling Locations</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-container">
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        
+                    </div>
+                </div>
+            </header>
+
+                                
+            <h3 class="title-5 m-b-35" style="margin-top:  100px; margin-left: 40px; ">Politican Statements and Stances</h3>
+                <input id="pac-input" class="au-input au-input--xl" style="margin-top: 10px; margin-left: 40px;" type="text" name="search" placeholder="Type your address" />
+            <button onclick="getPollingInfo(); getRepInfo();" style="background-color: #4173d7; width: 45px; height: 45px; border-radius: 5px;" type="submit">
+                <i class="zmdi zmdi-search" style="color: white;"></i>
+            </button>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <span style="padding-left: 15px; font-size: 30px;">Polling Locations</span>
+                            <div class="col-lg-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr style="background-color: #4173d7;">
+                                        <th scope="col" style="color: white;">Location Name</th>
+                                        <th scope="col" style="color: white;">Address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="location1">
+                                        </tr>
+
+                                        <tr id="location2">
+                                        </tr>
+
+                                        <tr id="location3">
+                                        </tr>
+
+                                        <tr id="location4">
+                                        </tr>
+
+                                        <tr id="location5">
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span style="padding-left: 15px; font-size: 30px; margin-left: 15px; margin-top: 20px;">Elected Representatives</span>
+                        <div class="col-lg-12">
+                            <table class="table table-striped" style="margin-left: 15px;">
+                                <thead>
+                                    <tr style="background-color: #4173d7;">
+                                    <th scope="col" style="color: white;"></th>
+                                    <th scope="col" style="color: white;">Name</th>
+                                    <th scope="col" style="color: white;">Position</th>
+                                    <th scope="col" style="color: white;">Party</th>
+                                    <th scope="col" style="color: white;">Phone Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="president">
+                                    </tr>
+
+                                    <tr id="vice-president">
+                                    
+                                    </tr>
+
+                                    <tr id="senator-1">
+                                    
+                                    </tr>
+
+                                    <tr id="senator-2">
+                                    
+                                    </tr>
+                                    <tr id="representative">
+                                        
+                                    </tr>
+                                    <tr id="governor">
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="./static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="./static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="./static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="./static/vendor/slick/slick.min.js">
+    </script>
+    <script src="./static/vendor/wow/wow.min.js"></script>
+    <script src="./static/vendor/animsition/animsition.min.js"></script>
+    <script src="./static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="./static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="./static/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="./static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="./static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="./static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="./static/vendor/select2/select2.min.js"></script>
+
+    <!-- Main JS-->
+    <script src="./static/js/main.js"></script>
+
+</body>
+
+</html>
